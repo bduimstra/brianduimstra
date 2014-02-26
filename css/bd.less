@@ -1,0 +1,177 @@
+// mixins & variables
+@darkGrey: #333;
+@lightGrey: #999;
+@white: #fff;
+
+@roboto: 'Roboto', sans-serif;
+
+.animate(@all: all, @speed: 300ms, @type: linear) {
+	-moz-transition: @all @speed @type;
+	-ms-transition: @all @speed @type;
+	-o-transition: @all @speed @type;
+	-webkit-transition: @all @speed @type;
+	transition: @all @speed @type;
+}
+
+.transform(@string) {
+	-moz-transform: @string;
+	-ms-transform: @string;
+	-o-transform: @string;
+	-webkit-transform: @string;
+	transform: @string;
+}
+
+a,
+p,
+li,
+ul,
+img,
+div,
+span,
+nav,
+header,
+h1,
+h2,
+h3,
+section,
+main,
+article,
+footer,
+small {
+	box-sizing:border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	position: relative;
+}
+
+ul,
+li,
+p,
+a,
+h1,
+h2,
+h3 {
+	padding: 0;
+	margin: 0;
+}
+
+html,
+body {
+	background: lighten(@lightGrey, 20%);
+	font-family: @roboto;
+	height: 100%;
+	position: relative;
+	width: 100%;
+}
+
+nav {
+	background: darken(@lightGrey, 10%);
+	height: 2em;
+	width: 100%;
+
+	.show-nav {
+		line-height: 2em;
+		padding: 0 0.5em;
+	}
+}
+
+section.main {
+	padding: 0 2em;
+
+	header {
+		border-bottom: 1px solid darken(@lightGrey, 10%);
+		padding: 1em 0;
+
+		p {
+			text-align: center;
+		}
+
+		h1 {
+			color: @white;
+			font-weight: 300;
+			text-align: center;
+			width: 100%;
+		}
+	}
+}
+
+
+@media screen and (min-width: 40em) {
+	nav {
+		.animate();
+		background: lighten(@darkGrey, 20%);
+		float: left;
+		height: 100%;
+		text-align: center;
+		width: 15%;
+
+		&.visible {
+			background: @darkGrey;
+			width: 85%;
+		}
+
+		&:hover .show-nav {
+			color: @white;
+		}
+
+		ul {
+		}
+
+		a {
+			&:link,
+			&:visited,
+			&:hover,
+			&:focus {
+				color: @white;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.show-nav {
+		color: @darkGrey;
+		cursor: pointer;
+
+		span {
+			.animate();
+			display: inline-block;
+			font-size: 2em;
+			.transform(rotate(90deg));
+			user-select: none;
+			-webkit-user-select: none;
+		}
+
+		&.visible {
+			background: lighten(@darkGrey, 5%);
+			box-shadow: -10px 1px 10px 0 rgba(0, 0, 0, 0.3);
+
+			span {
+				.transform(rotate(-90deg));
+			}
+		}
+	}
+}
+
+
+
+.letter-holder {
+	text-align: center;
+	width: 100%;
+
+	span {
+		&.letter {
+			color: #fff;
+			display: inline-block;
+			font: bold 10em/1 Arial;
+			-webkit-transform-origin: top center;
+			-webkit-animation: tilt 3s infinite;
+		}
+	}
+}
+
+
+@-webkit-keyframes tilt {
+	0% {-webkit-transform: rotate(-15deg);}
+	50% {-webkit-transform: rotate(15deg);}
+	100% {-webkit-transform: rotate(-15deg);}
+}
