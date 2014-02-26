@@ -3,20 +3,19 @@
 @lightGrey: #999;
 @white: #fff;
 
-@roboto: 'Roboto', sans-serif;
-@symbols: 'symbols', sans-serif;
-
 @font-face {
 	font-family: 'symbols';
-	src: url('fonts/websymbols-regular-webfont.eot');
-	src: url('fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('fonts/websymbols-regular-webfont.woff') format('woff'),
-		 url('fonts/websymbols-regular-webfont.ttf') format('truetype'),
-		 url('fonts/websymbols-regular-webfont.svg#symbols') format('svg');
+	src: url('../fonts/websymbols-regular-webfont.eot');
+	src: url('../fonts/websymbols-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('../fonts/websymbols-regular-webfont.woff') format('woff'),
+		 url('../fonts/websymbols-regular-webfont.ttf') format('truetype'),
+		 url('../fonts/websymbols-regular-webfont.svg#symbols') format('svg');
 	font-weight: normal;
 	font-style: normal;
-
 }
+
+@roboto: 'Roboto', sans-serif;
+@symbols: 'symbols', sans-serif;
 
 .animate(@all: all, @speed: 300ms, @type: linear) {
 	-moz-transition: @all @speed @type;
@@ -79,12 +78,20 @@ body {
 
 nav {
 	background: darken(@lightGrey, 10%);
-	height: 2em;
+	height: 3em;
 	width: 100%;
 
 	.show-nav {
-		line-height: 2em;
+		line-height: 3em;
 		padding: 0 0.5em;
+
+		span {
+			color: @white;
+			cursor: pointer;
+			font-family: @symbols;
+			font-size: 2em;
+			text-shadow: 1px 1px 1px #aaa;
+		}
 	}
 }
 
@@ -93,7 +100,7 @@ section.main {
 
 	header {
 		border-bottom: 1px solid darken(@lightGrey, 10%);
-		padding: 1em 0;
+		padding: 2em 0;
 
 		p {
 			text-align: center;
@@ -105,67 +112,36 @@ section.main {
 			text-align: center;
 			width: 100%;
 		}
+
+		.js-expand {
+			color: @white;
+			font-family: @symbols;
+			font-size: 1.5em;
+			margin-top: 0.75em;
+			position: absolute;
+			text-align: center;
+			width: 100%;
+
+			span {
+				background-color: darken(@lightGrey, 10%);
+				border-radius: 3em;
+				cursor: pointer;
+				display: inline-block;
+				height: 2em;
+				line-height: 2em;
+				width: 2em;
+				-webkit-animation: rotation 1s infinite linear;
+			}
+		}
 	}
 }
 
 
 @media screen and (min-width: 40em) {
-	nav {
-		.animate();
-		background: lighten(@darkGrey, 20%);
-		float: left;
-		height: 100%;
-		text-align: center;
-		width: 15%;
-
-		&.visible {
-			background: @darkGrey;
-			width: 85%;
-		}
-
-		&:hover .show-nav {
-			color: @white;
-		}
-
-		ul {
-		}
-
-		a {
-			&:link,
-			&:visited,
-			&:hover,
-			&:focus {
-				color: @white;
-				text-decoration: none;
-			}
-		}
-	}
-
-	.show-nav {
-		color: @darkGrey;
-		cursor: pointer;
-
-		span {
-			.animate();
-			display: inline-block;
-			font-size: 2em;
-			.transform(rotate(90deg));
-			user-select: none;
-			-webkit-user-select: none;
-		}
-
-		&.visible {
-			background: lighten(@darkGrey, 5%);
-			box-shadow: -10px 1px 10px 0 rgba(0, 0, 0, 0.3);
-
-			span {
-				.transform(rotate(-90deg));
-			}
-		}
-	}
 }
 
-
+@media screen and (min-width: 60em) {
+}
 
 .letter-holder {
 	text-align: center;
@@ -187,4 +163,9 @@ section.main {
 	0% {-webkit-transform: rotate(-15deg);}
 	50% {-webkit-transform: rotate(15deg);}
 	100% {-webkit-transform: rotate(-15deg);}
+}
+
+@-webkit-keyframes rotation {
+	0% {-webkit-transform: rotate(0deg);}
+	100% {-webkit-transform: rotate(360deg);}
 }
