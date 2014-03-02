@@ -15,6 +15,14 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/bd.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io.connect(window.location);
+            socket.on('changed', function() {
+                window.location.reload();
+            });
+        </script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -22,15 +30,21 @@
         <![endif]-->
 
         <nav>
-            <div class="js-nav show-nav"><span>+</span></div>
+            <div class="js-nav show-nav"><span></span></div>
+            <ul>
+                <li><a href="#">about me</a></li>
+                <li><a href="#">resum&eacute;</a></li>
+                <li><a href="#">contact</a></li>
+                <li><a href="#">blog</a></li>
+                <li><a href="#">links</a></li>
+            </ul>
         </nav>
 
         <section class="main">
             <header>
                 <h1>Brian D.</h1>
                 <p>developer</p>
-
-                <div class="js-expand"><span>*</span></div>
+                <a href="mailto:me@brianduimstra.com?subject=Well hello there&body=Here is a message" title="email me!">me@brianduimstra.com</a>
             </header>
         </section>
 
