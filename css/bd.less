@@ -1,29 +1,23 @@
 // mixins & variables
-@darkGrey: #333;
-@lightGrey: #999;
-@steelBlue: #4682B4;
-@white: #fff;
-
 @font-face {
-	font-family: 'symbols';
-	src: url('../fonts/symbols-webfont.eot');
-	src: url('../fonts/symbols-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('../fonts/symbols-webfont.woff') format('woff'),
-		 url('../fonts/symbols-webfont.ttf') format('truetype'),
-		 url('../fonts/symbols-webfont.svg#symbols') format('svg');
-	font-weight: normal;
-	font-style: normal;
+	font-family: 'sourceCode';
+	src: url('../fonts/SourceCodePro-Light.otf.woff') format('woff'),
+		 url('../fonts/SourceCodePro-Light.ttf') format('truetype');
 }
 
-@roboto: 'Roboto', sans-serif;
-@symbols: 'symbols', sans-serif;
+.transition(@target: all, @speed: 300ms, @type: linear) {
+	-moz-transition: @target @speed @type;
+	-ms-transition: @target @speed @type;
+	-o-transition: @target @speed @type;
+	-webkit-transition: @target @speed @type;
+	transition: @target @speed @type;
+}
 
-.animate(@all: all, @speed: 300ms, @type: linear) {
-	-moz-transition: @all @speed @type;
-	-ms-transition: @all @speed @type;
-	-o-transition: @all @speed @type;
-	-webkit-transition: @all @speed @type;
-	transition: @all @speed @type;
+.animate(@target: all, @speed: 400ms, @type: linear) {
+	-moz-animation: @target @speed @type;
+	-o-animation: @target @speed @type;
+	-webkit-animation: @target @speed @type;
+	animation: @target @speed @type;
 }
 
 .transform(@string) {
@@ -34,187 +28,73 @@
 	transform: @string;
 }
 
-a,
-p,
-li,
-ul,
-img,
-div,
-span,
-nav,
-header,
-h1,
-h2,
-h3,
-section,
-main,
-article,
-footer,
-small {
+// resets
+* {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 	position: relative;
 }
 
-ul,
-li,
-p,
-a,
-h1,
-h2,
-h3 {
-	padding: 0;
-	margin: 0;
-}
-
+// main styles
 html,
 body {
-	background: @darkGrey;
-	font-family: @roboto;
+	font-family: 'sourceCode';
+	font-size: 16px;
 	height: 100%;
-	overflow: hidden;
 	position: relative;
 	width: 100%;
 }
 
-nav {
-	background: @steelBlue;
-	box-shadow: 0 -7px 10px 5px #111;
-	height: 3em;
+header {
+	top: 50%;
+	.transform(translateY(-50%));
 	width: 100%;
-	z-index: 1;
 
-	.show-nav {
-		line-height: 1.5;
-		padding: 0 0.5em;
-
-
-		span {
-			color: @white;
-			cursor: pointer;
-			font-family: @symbols;
-			font-size: 2em;
-	
-
-			&:after {
-				content: "+";
-			}
-		}
-
-		&.visible span:after {
-			content: "-";
-		}
+	h1 {
+		text-shadow: 0 0 4px black;
+		text-align: center;
+		width: 100%;
+		.animate(glow, 5s, infinite);
 	}
 
-	ul {
-		.animate();
-		background-color: rgba(0, 0, 0, 0.6);
-		border-bottom-right-radius: 10px;
-		display: none;
-		list-style: none;
-
-		width: 80%;
-
-		&.visible {
-			display: block;
-		}
-
-		li {
-			font: 0.8em/3 @roboto;
-			
-			a,
-			a:visited,
-			a:hover,
-			a:link,
-			a:focus {
-				.animate();
-				color: @white;
-				display: inline-block;
-				padding: 1em;
-				text-decoration: none;
-				width: 100%;
-
-				&:last-child {
-					border-bottom-right-radius: 10px;
-				}
-
-				&:hover {
-					background-color: rgba(0, 0, 0, 0.6);
-				}
-			}
-		}
-	}
-}
-
-section.main {
-	padding: 0 2em;
-
-	header {
-		padding: 2em 0;
-
+	&:hover {
 		h1 {
-			color: @white;
-			font-weight: 300;
-			text-align: center;
-			width: 100%;
-		}
-
-		p {
-			color: @steelBlue;
-			text-align: center;
-		}
-
-		a,
-		a:visited,
-		a:hover,
-		a:link,
-		a:focus {
-			.animate();
-			color: @lightGrey;
-			display: inline-block;
-			font: 0.8em/1 @roboto;
-			text-align: center;
-			text-decoration: none;
-			width: 100%;
-
-			&:hover {
-				color: @white;
-			}
 		}
 	}
 }
 
 
+// media queries
 @media screen and (min-width: 40em) {
 }
 
 @media screen and (min-width: 60em) {
 }
 
-.letter-holder {
-	text-align: center;
-	width: 100%;
-
-	span {
-		&.letter {
-			color: #fff;
-			display: inline-block;
-			font: bold 10em/1 Arial;
-			-webkit-transform-origin: top center;
-			-webkit-animation: tilt 3s infinite;
-		}
-	}
+// animations
+@-webkit-keyframes glow {
+	0% { text-shadow: 0 0 4px black; }
+	50% { text-shadow: none; }
+	100% { text-shadow: 0 0 4px black; }
 }
 
-
-@-webkit-keyframes tilt {
-	0% {-webkit-transform: rotate(-15deg);}
-	50% {-webkit-transform: rotate(15deg);}
-	100% {-webkit-transform: rotate(-15deg);}
+@-moz-keyframes glow {
+	0% { text-shadow: 0 0 4px black; }
+	50% { text-shadow: none; }
+	100% { text-shadow: 0 0 4px black; }
 }
 
-@-webkit-keyframes rotation {
-	0% {-webkit-transform: rotate(0deg);}
-	100% {-webkit-transform: rotate(360deg);}
+@-o-keyframes glow {
+	0% { text-shadow: 0 0 4px black; }
+	50% { text-shadow: none; }
+	100% { text-shadow: 0 0 4px black; }
+}
+
+@keyframes glow {
+	0% { text-shadow: 0 0 4px black; }
+	50% { text-shadow: none; }
+	100% { text-shadow: 0 0 4px black; }
 }
