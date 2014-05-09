@@ -52,18 +52,27 @@ header {
 	top: 50%;
 	.transform(translateY(-50%));
 	width: 100%;
+	text-align: center;
 
 	h1 {
 		color: #fff;
+		font-size: 2rem;
 		text-shadow: 0 0 5px rgba(30, 30, 30, 0.2);
-		text-align: center;
 		width: 100%;
 		.animate(glow, 10s, infinite);
 	}
 
-	&:hover {
-		h1 {
-		}
+	a:link,
+	a:visited,
+	a:active {
+		color: #ddd;
+		font-size: 1.5rem;
+		text-decoration: none;
+		.transition;
+	}
+
+	a:hover {
+		color: #ccc;
 	}
 }
 

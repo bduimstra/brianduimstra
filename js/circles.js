@@ -1,6 +1,7 @@
 var Circles = function(options) {
 	this.defaults = {
-		numCircles : 10
+		numCircles : 10,
+		circleSize : 500
 	}
 
 	this.settings = $.extend({}, this.defaults, options);
@@ -58,7 +59,7 @@ Circles.prototype.addCircles = function() {
 	});
 
 	for (i = 0; i < this.settings.numCircles; i++) {
-		randNum = Math.round(Math.random() * 500);
+		randNum = Math.round(Math.random() * this.settings.circleSize);
 		randPosX = Math.round(Math.random() * 100);
 		randPosY = Math.round(Math.random() * 100);
 		randColor = this.randomColor();
