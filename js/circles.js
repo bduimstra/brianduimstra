@@ -37,8 +37,6 @@ Circles.prototype.randomColor = function() {
 
 Circles.prototype.animateCircles = function() {
 	var randCircle = Math.round(Math.random() * $('.circle').length);
-	
-	console.log('this ran')
 
 	$('.circle').eq(randCircle).animate({'opacity' : '.1', 'zoom' : '1.5'}, 1000, function() {
 		$('.circle').eq(randCircle).animate({'opacity' : '0.05', 'zoom' : '1'}, 2000);

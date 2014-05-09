@@ -33,7 +33,8 @@
 		<script src="js/circles.js"></script>
 
 		<script>
-			var circles = new Circles({'numCircles' : 10});
+			var numCircles = $(window).width() < 1024 ? 10 : 20
+				circles = new Circles({'numCircles' : numCircles});
 
 			circles.init();
 		</script>
