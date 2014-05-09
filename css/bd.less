@@ -54,10 +54,11 @@ header {
 	width: 100%;
 
 	h1 {
-		text-shadow: 0 0 4px black;
+		color: #fff;
+		text-shadow: 0 0 5px rgba(30, 30, 30, 0.2);
 		text-align: center;
 		width: 100%;
-		.animate(glow, 5s, infinite);
+		.animate(glow, 10s, infinite);
 	}
 
 	&:hover {
@@ -76,25 +77,25 @@ header {
 
 // animations
 @-webkit-keyframes glow {
-	0% { text-shadow: 0 0 4px black; }
-	50% { text-shadow: none; }
-	100% { text-shadow: 0 0 4px black; }
+	0% { text-shadow: 0 0 5px rgba(30, 30, 30, 0.2); }
+	50% { text-shadow: none; color: rgba(30, 30, 30, 0.2); }
+	100% { text-shadow: 0 0 5px rgba(30, 30, 30, 0.2); }
 }
 
 @-moz-keyframes glow {
-	0% { text-shadow: 0 0 4px black; }
+	0% { text-shadow: 0 0 5px rgba(30, 30, 30, 0.2); }
 	50% { text-shadow: none; }
-	100% { text-shadow: 0 0 4px black; }
+	100% { text-shadow: 0 0 5px rgba(30, 30, 30, 0.2); }
 }
 
 @-o-keyframes glow {
-	0% { text-shadow: 0 0 4px black; }
+	0% { text-shadow: 0 0 5px rgba(30, 30, 30, 0.2); }
 	50% { text-shadow: none; }
-	100% { text-shadow: 0 0 4px black; }
+	100% { text-shadow: 0 0 5px rgba(30, 30, 30, 0.2); }
 }
 
 @keyframes glow {
-	0% { text-shadow: 0 0 4px black; }
+	0% { text-shadow: 0 0 5px rgba(30, 30, 30, 0.2); }
 	50% { text-shadow: none; }
-	100% { text-shadow: 0 0 4px black; }
+	100% { text-shadow: 0 0 5px rgba(30, 30, 30, 0.2); }
 }
