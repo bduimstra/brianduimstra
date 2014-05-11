@@ -67,7 +67,7 @@ Circles.prototype.addCircles = function() {
 		$('#circles-container').append($circle.clone(true).css({'background-color': '#' + randColor, 'height': randNum, 'width': randNum, 'top': randPosY + '%', 'left': randPosX + '%'}));
 	}
 
-	var timer = setInterval(this.animateCircles, 1000)
+	var timer = setInterval(this.animateCircles, 4000)
 }
 
 Circles.prototype.init = function() {
